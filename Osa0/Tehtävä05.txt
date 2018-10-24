@@ -1,0 +1,32 @@
+kayttaja->selain:
+note left of selain
+Käyttäjä avaa selaimella spa sivun
+end note
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/spa
+note left of palvelin
+  muodostetaan HTML
+end note
+palvelin->selain: status 200, sivun HTML-koodi
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: status 200, CSS tyyli tiedosto
+
+note left of selain
+ Selain asettaa HTML elementeille CSS tiedostossa määritellyt tyylit
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/spa.js
+palvelin->selain: status 200, javascript tiedosto
+note left of selain
+ Selain asettaa kyselyyn tekevään xhttp olioon tapahtumankäsittelijän
+end note
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: status 200, JSON paketti
+note left of selain
+ Selain kutsuu tapahtumankäsittelijää , joka lukee JSON paketin listan
+ ja kutsuu edelleen funktiota joka piirtää listan uudelleen (redrawNotes).
+ Funktio redraw notes lisää listan itemit oikeaan paikkaan HTML dokumenttiin.
+ Selain asettaa vielä lomakkeen lähetys elementille tapahtumankäsittelijän,
+ (joka estää uudelleenohjauksen kun data lähetetään ja lisää uuden muistiinpanon
+ selaimen omaan listaan, sekä lähettää sen palvelimelle tapahtuman toteutuessa).
+end note

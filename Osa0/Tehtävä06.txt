@@ -1,0 +1,13 @@
+kayttaja->selain:
+note left of selain
+Käyttäjä klikkaa talleta painiketta SPA sivulla
+end note
+note left of selain
+ Selain kutsuu lomake elementin tapahtumankäsittelijää,
+ joka estää elementin tavanomaisen toiminnan, lisää uden muistiinpanon listaan,
+ kutsuu listan uudelleenpiirtämistä ja lähettää vielä uuden muistiinpanon
+ JSON muotoisena pakettina palvelimelle.
+end note
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note_spa
+
+palvelin->selain: status 201, Created
